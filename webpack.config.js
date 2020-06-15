@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlPlugin = require("html-webpack-plugin");
+const WriteFilePlugin = require("write-file-webpack-plugin");
+
 module.exports = {
   entry: path.join(__dirname, "./src/index.js"),
   output: {
@@ -14,6 +16,7 @@ module.exports = {
   //     },
   //   ],
   // },
+  devtool: "none",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: false,
@@ -23,5 +26,6 @@ module.exports = {
     new HtmlPlugin({
       template: path.join(__dirname, "./index.html"),
     }),
+    new WriteFilePlugin(),
   ],
 };
